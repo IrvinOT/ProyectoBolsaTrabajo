@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    @model BolsaTrabajo.Models.CarrerasViewModel
+     @{ var ModeloTemp = new BolsaTrabajo.Models.CarrerasViewModel(); }
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
@@ -8,24 +10,32 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar fixed-top">
         <div class="container ">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 @Html.ActionLink("ITCJ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand " })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav ">
-                    <li>@Html.ActionLink("Iniciar Sesion", "Contact", "Home")</li>
+            <div>
+                <ul class="nav ">
+                    <li class="nav-item">
+                        <a id="Buscar" data-toggle="collapse" href="#formularioBusqueda" role="button" aria-expanded="false" aria-controls="formularioBusqueda"> Buscar <i class="fas fa-search"></i> </a>
+                    </li>
+                    <li class="nav-item">@Html.ActionLink("Iniciar Sesion", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
+      
     </div>
     <div class="container body-content">
+        <div class="collapse container fixed-top" id="formularioBusqueda" >
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+            <div class="nav">
+                @Html.DropDownListFor(m => m.Carrera,ModeloTemp.ListaCarreras, new {@Class = "form-control form-control-sm" })
+                <input type="submit" class="btn btn-sm btn-buscar" value="Buscar" />
+            </div>
+            }
+        </div>
         @RenderBody()
         <hr />
         <footer>
@@ -35,6 +45,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://kit.fontawesome.com/b008a436f5.js" crossorigin="anonymous"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

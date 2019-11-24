@@ -24,11 +24,39 @@ textarea {
     max-width: 280px;
 }
 
-.navbar {
+.navbar, 
+#formularioBusqueda {
     background-color: var(--colorPrimario);
 }
 
+#formularioBusqueda{
+    padding: 0.8rem;
+}
 
-.navbar-inverse .navbar-toggle {
-    background-color: var(--colorPrimario);
+.navbar-header a, .nav a {
+    color: white;
+}
+
+
+.card{
+    margin: 1rem 0;
+}
+.icono{
+  font-size:1.2rem;
+  margin-right:0.1rem;
+}
+
+#Buscar{
+    color:white;
+    margin-right: 1rem;
+}
+
+#formularioBusqueda{
+    margin-top:3rem;
+}
+
+.btn-buscar{
+    color: white;
+    border: 1px solid white;
+    margin-left: 0.3rem;
 }
