@@ -30,7 +30,7 @@ namespace BolsaTrabajo.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            ViewBag.Message = "Inicio de sesión";
+            ViewBag.Message = "Login";
 
             return View();
         }
