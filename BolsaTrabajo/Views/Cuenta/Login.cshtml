@@ -1,0 +1,45 @@
+﻿@model BolsaTrabajo.Models.CarrerasViewModel
+
+@{
+    ViewBag.Title = "Iniciar Sesión";
+}
+@using (Html.BeginForm())
+{
+
+    <div class="row">
+        <div class="col-md-8">
+            <section id="loginForm">
+                <h4>Use su correo institucional para inciar sesión</h4>
+                <hr />
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Registrarse" />
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Registrar como nuevo usuario", "Register")
+                </p>
+
+            </section>
+
+
+        </div>
+
+    </div>
+
+
+}

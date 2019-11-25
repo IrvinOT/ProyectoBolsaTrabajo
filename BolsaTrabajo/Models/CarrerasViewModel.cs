@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +11,18 @@ namespace BolsaTrabajo.Models
     {
 
         public string Carrera { get; set; }
+
+         [Required]
+         [Display(Name = "Correo electrónico")]
+         [EmailAddress]
+         public string Email { get; set; }
+
+         [Required]
+         [DataType(DataType.Password)]
+         [Display(Name = "Contraseña")]
+         public string Password { get; set; }
+
+
 
         public IEnumerable<SelectListItem> ListaCarreras { get {
                 return new List<SelectListItem>
@@ -24,4 +37,5 @@ namespace BolsaTrabajo.Models
             }
         }
     }
+    
 }
