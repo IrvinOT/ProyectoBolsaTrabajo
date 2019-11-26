@@ -61,8 +61,5 @@ textarea {
     margin-left: 0.3rem;
 }
 .bg-principal {
-    background-color: #4F0B0B;
+    background-color: #d1282b !important;
 }
-    .bg-principal :hover {
-        background-color: #AB0000;
-    }
