@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,10 +12,17 @@ namespace BolsaTrabajo.Models
 
         public string Carrera { get; set; }
 
-        public IEnumerable<SelectListItem> ListaCarreras
-        {
-            get
-            {
+         [Required]
+         [EmailAddress]
+         public string Email { get; set; }
+
+         [Required]
+         [DataType(DataType.Password)]
+         public string Password { get; set; }
+
+
+
+        public IEnumerable<SelectListItem> ListaCarreras { get {
                 return new List<SelectListItem>
                 {
                     new SelectListItem {Text = "Sistemas Computacionales", Value="Sistemas Computacionales" },
@@ -26,5 +34,22 @@ namespace BolsaTrabajo.Models
                 };
             }
         }
+
+        public string NombreEmp { get; set; }
+        public string RazonEmp { get; set; }
+        public string GiroEmp { get; set; }
+        public string Calle { get; set; }
+        public string Colonia { get; set; }
+        public string Cp { get; set; }
+        public string Ciudad { get; set; }
+        public string TelefonoD { get; set; }
+        public string NombreE { get; set; }
+        public string DependenciaE { get; set; }
+        public string PuestoE { get; set; }
+        public string CorreoE { get; set; }
+        public string PassE { get; set; }
+        public string PassEC { get; set; }
+        public string TelefonoE { get; set; }
     }
+    
 }

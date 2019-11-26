@@ -26,5 +26,13 @@ namespace BolsaTrabajo.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            ViewBag.Message = "Login";
+
+            return View();
+        }
     }
 }

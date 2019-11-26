@@ -1,0 +1,89 @@
+﻿@model BolsaTrabajo.Models.CarrerasViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+@using (Html.BeginForm())
+{
+    <div class="container mt-4">
+        <div class="col-md-12"><h1>Registro Empresa</h1></div>
+        <section class="row">
+            <div class="form-group col-md-12">
+                <label>Nombre Comercial:</label>
+                @Html.TextBoxFor(m => m.NombreEmp, new { @class = "form-control form-control-sm" })
+            </div>
+            <div class="form-group col-md-6">
+                <label>Giro de la empresa:</label>
+                @Html.TextBoxFor(m => m.GiroEmp, new { @class = "form-control" })
+            </div>
+            <div class="form-group col-md-6">
+                <label>Sector perteneciente:</label>
+                <label>Acaba una lista mamalona como la de la busqueda no mas que no lo supe hacer</label>
+            </div>
+            <div class="col-md-12 form-group">
+                <label>Telefono empresa:</label>
+                @Html.TextBoxFor(m => m.TelefonoE, new { @class = "form-control" })
+            </div>
+        </section>
+        <hr />
+        <h5 class="col-md-12">Dirección:</h5>
+        <section class="row">
+            <div class="col-md-12 form-group">
+                <label>Calle y número:</label>
+                @Html.TextBoxFor(m => m.Calle, new { @class = "form-control" })
+            </div>
+            <div class="col-md-4 form-group">
+                <label>Colonia:</label>
+                @Html.TextBoxFor(m => m.Colonia, new { @class = "form-control" })
+            </div>
+            <div class="col-md-4 form-group">
+                <label>Ciudad:</label>
+                @Html.TextBoxFor(m => m.Ciudad, new { @class = "form-control" })
+            </div>
+            <div class="col-md-4 form-group">
+                <label>CP:</label>
+                @Html.TextBoxFor(m => m.Cp, new { @class = "form-control" })
+            </div>
+        </section>
+        <hr />
+        <h5 class="col-md-12">Datos del contacto con la empresa:</h5>
+        <section class="row">
+            <div class="col-md-12 form-group">
+                <label>Nombre completo:</label>
+                @Html.TextBoxFor(m => m.NombreE, new { @class = "form-control" })
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Puesto:</label>
+                @Html.TextBoxFor(m => m.PuestoE, new { @class = "form-control" })
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Dependencia:</label>
+                @Html.TextBoxFor(m => m.DependenciaE, new { @class = "form-control" })
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Correo electronico:</label>
+                @Html.TextBoxFor(m => m.CorreoE, new { @class = "form-control" })
+
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Telefono directo:</label>
+                @Html.TextBoxFor(m => m.TelefonoE, new { @class = "form-control" })
+
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Contreseña:</label>
+                @Html.TextBoxFor(m => m.PassE, new { @class = "form-control" })
+
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Confirmar contraseña:</label>
+                @Html.TextBoxFor(m => m.PassEC, new { @class = "form-control" })
+
+            </div>
+        </section>
+        <input type="submit" name="Registrar" value="Registar" class="btn btn-danger"/>
+        
+    </div>
+
+
+}
