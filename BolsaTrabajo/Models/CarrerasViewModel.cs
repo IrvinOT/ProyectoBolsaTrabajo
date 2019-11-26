@@ -29,8 +29,17 @@ namespace BolsaTrabajo.Models
                     new SelectListItem {Text = "Mecatronica", Value="Mecatronica" },
                     new SelectListItem {Text = "Logistica", Value="Logistica" },
                     new SelectListItem {Text = "Industrial", Value="Industrial" },
-                    new SelectListItem {Text = "Gestion Empresarial", Value="Gestion Empresarial" },
+                    new SelectListItem {Text = "Gestion Empresarial", Value="Gestion Empresarial" }
+                };
+            }
+        }
 
+        public IEnumerable<SelectListItem> ListaSectores
+        {
+            get
+            {
+                return new List<SelectListItem> {
+                    new SelectListItem{Text = "" }
                 };
             }
         }
