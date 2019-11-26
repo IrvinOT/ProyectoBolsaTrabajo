@@ -60,3 +60,9 @@ textarea {
     border: 1px solid white;
     margin-left: 0.3rem;
 }
+.bg-principal {
+    background-color: #4F0B0B;
+}
+    .bg-principal :hover {
+        background-color: #AB0000;
+    }
