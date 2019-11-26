@@ -3,18 +3,21 @@
 }
 
 <div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Puesto</h5>
-        <h6 class="card-subtitle mb-2 text-muted"><i class="far fa-building icono"></i> Empresa</h6>
-        <p class="card-text">
-            previo Descripcion puestoRequisitos del Puesto
+    @using (Html.BeginForm())
+    {
+        <div class="card-body">
+            <h5 class="card-title">Puesto</h5>
+            <h6 class="card-subtitle mb-2 text-muted"><i class="far fa-building icono"></i> Empresa</h6>
+            <p class="card-text">
+                previo Descripcion puestoRequisitos del Puesto
 
-            • Experiencia en Reparación de computadoras, celulares y otros equipos electrónicos
-        </p>
-        <span class="navbar-text">Carreras: </span>
-        <a href="#" class="card-link">Carrera1</a>
-        <a href="#" class="card-link">Carrera2</a>
-    </div>
+                • Experiencia en Reparación de computadoras, celulares y otros equipos electrónicos
+            </p>
+            <span class="navbar-text">Carreras: </span>
+            <a href="#" class="card-link">Carrera1</a>
+            <a href="#" class="card-link">Carrera2</a>
+        </div>
+    }
 </div>
 
 <div class="card">

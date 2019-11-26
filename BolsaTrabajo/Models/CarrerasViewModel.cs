@@ -11,7 +11,10 @@ namespace BolsaTrabajo.Models
 
         public string Carrera { get; set; }
 
-        public IEnumerable<SelectListItem> ListaCarreras { get {
+        public IEnumerable<SelectListItem> ListaCarreras
+        {
+            get
+            {
                 return new List<SelectListItem>
                 {
                     new SelectListItem {Text = "Sistemas Computacionales", Value="Sistemas Computacionales" },
