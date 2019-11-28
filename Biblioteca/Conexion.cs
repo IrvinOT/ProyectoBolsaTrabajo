@@ -11,19 +11,15 @@ namespace Biblioteca
 {
     class Conexion
     {
-        public SqlConnection getConexion()
+        public Conexion()
         {
-            try
-            {
                 string cadena = "Data Source=TREJO-PC\\MSSQLSERVER01;Initial Catalog=\"Bolsa deTrabajo\";Integrated Security=True";
-                SqlConnection cnn = new SqlConnection(cadena);
-                cnn.Open();
-                return cnn;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+                cnn = new SqlConnection(cadena);
+          
         }
+
+        public SqlConnection cnn { get;}
+
+        public SqlCommand comand { get; set; }
     }
 }
