@@ -11,13 +11,17 @@ namespace Biblioteca
 {
     class Operacion
     {
-        public bool Insertar(string query)
+        public bool insertar(string query)
         {
-            Conexion cn = new Conexion();
+            Conexion conexion = new Conexion();
             try
             {
-                SqlCommand cmd = new SqlCommand(query,cn.getConexion());
+                SqlConnection con = conexion.cnn;
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query,con);
                 int n = cmd.ExecuteNonQuery();
+                con.Close();
+               
                 return n > 0;
             }
             catch(Exception)
@@ -25,5 +29,7 @@ namespace Biblioteca
                 return false;
             }
         }
+
+       
     }
 }
