@@ -17,6 +17,8 @@ namespace BolsaTrabajo.Models
         public string Ciudad { get; set; }
         public string TelefonoD { get; set; }
         public string NombreE { get; set; }
+        public string ApellidoP { get; set; }
+        public string ApellidoM { get; set; }
         public string DependenciaE { get; set; }
         public string PuestoE { get; set; }
         public string CorreoE { get; set; }

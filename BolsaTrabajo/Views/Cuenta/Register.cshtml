@@ -48,9 +48,17 @@
         <hr />
         <h5 class="col-md-12">Datos del contacto con la empresa:</h5>
         <section class="row">
-            <div class="col-md-12 form-group">
-                <label>Nombre completo:</label>
+            <div class="col-md-6 form-group">
+                <label>Nombre:</label>
                 @Html.TextBoxFor(m => m.NombreE, new { @class = "form-control" })
+            </div>
+            <div class="col-md-4form-group">
+                <label>Apellido Paterno:</label>
+                @Html.TextBoxFor(m => m.ApellidoP, new { @class = "form-control" })
+            </div>
+            <div class="col-md-4 form-group">
+                <label>Apellido Materno:</label>
+                @Html.TextBoxFor(m => m.ApellidoM, new { @class = "form-control" })
             </div>
             <div class="col-md-6 form-group">
                 <label>Puesto:</label>

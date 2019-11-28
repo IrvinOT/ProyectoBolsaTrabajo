@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Biblioteca
 {
-    class Operacion
+   public class Operacion
     {
         public bool insertar(string query)
         {
@@ -24,12 +24,36 @@ namespace Biblioteca
                
                 return n > 0;
             }
-            catch(Exception)
+            catch(Exception e)
             {
+                e.Message.ToString();
                 return false;
             }
         }
+        public int LeerEmpresa(string query)
+        {
+            Conexion conexion = new Conexion();
+            int idEmpresa = -1;
+            try
+            {
+                SqlConnection con = conexion.cnn;
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader resultado = cmd.ExecuteReader();
+                while (resultado.Read())
+                {
+                    idEmpresa = resultado.GetInt32(0);
+                }
+                con.Close();
 
-       
+               return idEmpresa;
+            }
+            catch (Exception e)
+            {
+                e.Message.ToString();
+                return  -1;
+            }
+        }
     }
+
 }
