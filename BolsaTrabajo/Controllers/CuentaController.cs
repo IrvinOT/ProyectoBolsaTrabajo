@@ -21,6 +21,7 @@ namespace BolsaTrabajo.Controllers
         {
             return View();
         }
+        
 
         [HttpPost]
         public ActionResult Register(EmpresaViewModel model)
