@@ -17,5 +17,6 @@ namespace BolsaTrabajo.Controllers
         {
             return View();
         }
+        
     }
 }

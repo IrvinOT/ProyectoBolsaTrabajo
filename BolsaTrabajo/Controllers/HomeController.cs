@@ -34,5 +34,9 @@ namespace BolsaTrabajo.Controllers
 
             return View();
         }
+        public ActionResult Publicacion()
+        {
+            return View();
+        }
     }
 }
