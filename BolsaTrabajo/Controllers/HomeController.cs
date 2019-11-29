@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolsaTrabajo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,16 +27,16 @@ namespace BolsaTrabajo.Controllers
 
             return View();
         }
+        public ActionResult Publicacion()
+        {
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Login()
         {
             ViewBag.Message = "Login";
 
-            return View();
-        }
-        public ActionResult Publicacion()
-        {
             return View();
         }
     }

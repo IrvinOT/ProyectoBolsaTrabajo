@@ -25,5 +25,10 @@ namespace BolsaTrabajo.Models
         public string PassE { get; set; }
         public string PassEC { get; set; }
         public string TelefonoE { get; set; }
+
+        public string PuestoP { get; set; }
+        public string DescrP { get; set; }
+        public string RequP { get; set; }
+        public string CarerrasP { get; set; }
     }
 }
