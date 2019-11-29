@@ -130,6 +130,7 @@
     </Compile>
     <Compile Include="Models\CarrerasViewModel.cs" />
     <Compile Include="Models\EmpresaViewModel.cs" />
+    <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

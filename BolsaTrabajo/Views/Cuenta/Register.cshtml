@@ -75,17 +75,17 @@
             </div>
             <div class="col-md-6 form-group">
                 <label>Telefono directo:</label>
-                @Html.TextBoxFor(m => m.TelefonoE, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.TelefonoD, new { @class = "form-control" })
 
             </div>
             <div class="col-md-6 form-group">
                 <label>Contreseña:</label>
-                @Html.TextBoxFor(m => m.PassE, new { @class = "form-control" })
+                @Html.PasswordFor(m => m.PassE, new { @class ="form-control" })
 
             </div>
             <div class="col-md-6 form-group">
                 <label>Confirmar contraseña:</label>
-                @Html.TextBoxFor(m => m.PassEC, new { @class = "form-control" })
+                @Html.PasswordFor(m => m.PassEC, new { @class ="form-control" })
 
             </div>
         </section>

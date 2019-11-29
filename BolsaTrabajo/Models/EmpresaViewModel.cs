@@ -46,7 +46,7 @@ namespace BolsaTrabajo.Models
         public string PuestoP { get; set; }
         [Required]
         public string DescrP { get; set; }
-        [Required]
+        [Required] 
         public string RequP { get; set; }
         [Required]
         public string CarerrasP { get; set; }
