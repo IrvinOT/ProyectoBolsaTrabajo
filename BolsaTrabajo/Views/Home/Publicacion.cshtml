@@ -1,27 +1,29 @@
 ﻿@model BolsaTrabajo.Models.EmpresaViewModel
-<div class="container mt-4">
-    <div class="row">
-        <h2 class="col-md-12 row">Registrar publicación</h2>
-        <div class="form-group col-md-12">
-            <label>Titulo de vacante:</label>
-            @Html.TextBoxFor(m => m.PuestoP, new { @class = "form-control" })
+@Html.BeginForm(){ 
+    <div class="container mt-4">
+        <div class="row">
+            <h2 class="col-md-12 row">Registrar publicación</h2>
+            <div class="form-group col-md-12">
+                <label>Titulo de vacante:</label>
+                @Html.TextBoxFor(m => m.PuestoP, new { @class = "form-control" })
 
-        </div>
-        <div class="form-group col-md-12">
-            <label>Descripción:</label>
-            @Html.TextAreaFor(m => m.DescrP, new { @class = "form-control col-md-8" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Descripción:</label>
+                @Html.TextAreaFor(m => m.DescrP, new { @class = "form-control col-md-8" })
 
-        </div>
-        <div class="form-group col-md-12">
-            <label>Requisitos:</label>
-            @Html.TextAreaFor(m => m.RequP, new { @class = "form-control col-md-8" })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Requisitos:</label>
+                @Html.TextAreaFor(m => m.RequP, new { @class = "form-control col-md-8" })
 
-        </div>
-        <div class="form-group col-md-12">
-            <label>Carreras:</label>
-            @Html.TextBoxFor(m => m.CarerrasP, new { @class = "form-control " })
+            </div>
+            <div class="form-group col-md-12">
+                <label>Carreras:</label>
+                @Html.TextBoxFor(m => m.CarerrasP, new { @class = "form-control " })
 
+            </div>
         </div>
+
     </div>
-
-</div>
+}
