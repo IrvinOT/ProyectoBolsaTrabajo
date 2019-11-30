@@ -26,6 +26,7 @@ namespace BolsaTrabajo.Controllers
                 model.Email = lista.ElementAt(1);
                 model.Password = lista.ElementAt(2);
                 model.Tipo = lista.ElementAt(3);
+                if (lista.Count > 4) model.Empresa = lista.ElementAt(4);
                 TempData["Usuario"] = model;
                 return RedirectToAction("Index", "Home");
             }

@@ -91,8 +91,10 @@ namespace Biblioteca
             con.Open();
             List<string> lista = new List<string>();
             try {
-                string query =String.Format("Select U.IdUsuario, U.Correo, U.Passwor from Usuarios as U Inner Join Empleado as E ON U.IdUsuario = E.idUsuario"
-                                + " where U.Correo = '{0} && U.Passwor = '{1}';", correo, pass);
+                string query =String.Format("Select U.IdUsuario, U.Correo, U.Passwor, Em.Nombre " +
+                    "from Usuarios as U Inner Join Empleado as E ON U.IdUsuario = E.idUsuario "+
+                       " INNER JOIN Empresa Em ON E.Empresa = Em.ID"+
+                   " where U.Correo = '{0}' and U.Passwor = '{1}'; ", correo, pass);
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader resultado = cmd.ExecuteReader();
                 while (resultado.Read())
@@ -103,6 +105,7 @@ namespace Biblioteca
                     lista.Add(resultado.GetString(1)); // Correo
                     lista.Add(resultado.GetString(2)); // Password 
                     lista.Add("Empleado");
+                    lista.Add(resultado.GetString(3));
                 }
                 con.Close();
                 

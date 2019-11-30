@@ -42,13 +42,5 @@ namespace BolsaTrabajo.Models
         public string PassEC { get; set; }
         [Required]
         public string TelefonoE { get; set; }
-        [Required]
-        public string PuestoP { get; set; }
-        [Required]
-        public string DescrP { get; set; }
-        [Required] 
-        public string RequP { get; set; }
-        [Required]
-        public string CarerrasP { get; set; }
     }
 }
