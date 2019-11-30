@@ -14,14 +14,22 @@ namespace BolsaTrabajo.Controllers
         {
             return View("Publicacion");
         }
-
+        public ActionResult Modificar()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
+        [HttpGet]
 
+        public ActionResult AdminPublicacion()
+        {
+            return View();
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
