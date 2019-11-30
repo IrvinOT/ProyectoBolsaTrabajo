@@ -1,0 +1,31 @@
+﻿@model BolsaTrabajo.Models.EmpresaViewModel
+
+@using (Html.BeginForm("Modificar","Home", FormMethod.Post))
+{
+    <div class="container mt-4">
+        <div class="row">
+            <h3 class="col-md-12">Administrar publicaciones</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Titulo vacante</th>
+                        <th scope="col">Modificar | Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Practicante en sistemas computacionales</td>
+                        <td>
+                            <button class="btn" type="submit"><i class="far fa-edit"></i></button>
+                            |
+                            <input type="checkbox"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="button" value="Eliminar Seleccionados" class="btn btn-success"/>
+        </div>
+    </div>
+}

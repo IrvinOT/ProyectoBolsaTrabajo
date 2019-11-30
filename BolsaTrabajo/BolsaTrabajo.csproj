@@ -216,6 +216,8 @@
     <Content Include="Views\Home\Publicacion.cshtml" />
     <Content Include="Views\Cuenta\Login.cshtml" />
     <Content Include="Views\Cuenta\Register.cshtml" />
+    <Content Include="Views\Home\AdminPublicacion.cshtml" />
+    <Content Include="Views\Home\Modificar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
