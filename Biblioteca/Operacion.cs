@@ -136,6 +136,28 @@ namespace Biblioteca
           
             
         }
+
+        public List<String> carreras(string carrera)
+        {
+            Char[] arr = carrera.ToCharArray();
+            string carr = string.Empty;
+            List<String> listCarreas = new List<string>();
+            foreach (var ch in arr)
+            {
+                if (ch == Char.Parse(","))
+                {
+                    listCarreas.Add(carr);
+                    carr = string.Empty;
+                }
+                else
+                {
+                    carr += ch;
+                }
+            }
+
+            return listCarreas;
+
+        }
     }
 
 }

@@ -28,28 +28,43 @@ namespace BolsaTrabajo.Controllers
 
             return View();
         }
+        [HttpGet]
         public ActionResult Publicacion()
         {
+            var U =  new UsuarioViewModel
+            {
+                IdUsuario = 1,
+                Empresa = "Calcetines SA"
+            };
+            TempData["Usuario"] = U;
             return View();
         }
         [HttpPost]
         public ActionResult Publicacion(PublicacionViewModel m)
         {
-            //u = usuario m = modelo
-            if (TempData.ContainsKey("Usuario")) {
+            var s = 12;
+            //if (TempData.ContainsKey("Usuario")) {
                 var u = TempData["Usuario"] as UsuarioViewModel;
                 Operacion opBD = new Operacion();
-                string sql = String.Format("INSERT INTO [dbo].[Publicacion] ([Carreras],[Empresa],[Descricpion],[Vacante],[Requisitos],[IdEmpleado])"
-                    +" VALUES('{0}', '{1}', '{2}', '{3}', '{4}',{5})", m.Carreras, u.Empresa, m.Descripcion, m.Vacante, m.Requisitos, u.IdUsuario);
-
-
+               string sql = String.Format("INSERT INTO [dbo].[Publicacion] ([Empresa],[Descricpion],[Vacante],[Requisitos],[IdEmpleado])"
+                  + " VALUES('{0}', '{1}', '{2}', '{3}', {4})",u.Empresa, m.Descripcion, m.Vacante, m.Requisitos, u.IdUsuario);
+            opBD.insertar(sql);
+                int id = opBD.LeerEntero("Select * from Publicacion");
+                List<String> listaCarreras = opBD.carreras(m.Carreras);
+                foreach (var carr in listaCarreras)
+                {
+                    sql = String.Format("INSERT INTO [dbo].[Categoria] ([IdPublicacion],[Carrera])" +
+                       " VALUES({0},'{1}')", id, carr);
+                    opBD.insertar(sql);
+                }
+                TempData["Usuario"] = u;
             return View();
             }
-            else
-            {
-                return View("Login", "Cuenta");
-            }
-        }
+            //else
+            //{
+            //    return View("Login", "Cuenta");
+            //}
+        
 
         [HttpGet]
         public ActionResult Login()

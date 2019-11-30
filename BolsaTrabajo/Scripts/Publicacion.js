@@ -12,10 +12,10 @@ function agregarCarrera() {
     var sCarreras = txtCarreras.value;
     var slista = listCarreras.value
     if (sCarreras == "") {
-        txtCarreras.value = slista;
+        txtCarreras.value = slista + " ,";
     } else {
         if (!sCarreras.includes(slista))
-            txtCarreras.value += "," + slista;
+            txtCarreras.value += slista + ",";
     }
 }
 
