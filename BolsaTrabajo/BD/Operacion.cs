@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using BolsaTrabajo.Models;
 
 namespace Biblioteca
 {
@@ -38,7 +39,7 @@ namespace Biblioteca
             int idEmpresa = -1;
             try
             {
-                
+
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader resultado = cmd.ExecuteReader();
                 while (resultado.Read())
@@ -54,7 +55,7 @@ namespace Biblioteca
                 e.Message.ToString();
                 return idEmpresa;
             }
-            
+
         }
 
         public string LeerString(string query)
@@ -81,7 +82,7 @@ namespace Biblioteca
                 e.Message.ToString();
                 return idEmpresa;
             }
-            
+
         }
 
         public List<string> leerUsuario(string correo, string pass)
@@ -90,17 +91,18 @@ namespace Biblioteca
             SqlConnection con = conexion.cnn;
             con.Open();
             List<string> lista = new List<string>();
-            try {
-                string query =String.Format("Select U.IdUsuario, U.Correo, U.Passwor, Em.Nombre " +
-                    "from Usuarios as U Inner Join Empleado as E ON U.IdUsuario = E.idUsuario "+
-                       " INNER JOIN Empresa Em ON E.Empresa = Em.ID"+
+            try
+            {
+                string query = String.Format("Select U.IdUsuario, U.Correo, U.Passwor, Em.Nombre " +
+                    "from Usuarios as U Inner Join Empleado as E ON U.IdUsuario = E.idUsuario " +
+                       " INNER JOIN Empresa Em ON E.Empresa = Em.ID" +
                    " where U.Correo = '{0}' and U.Passwor = '{1}'; ", correo, pass);
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader resultado = cmd.ExecuteReader();
                 while (resultado.Read())
                 {
                     lista.Clear();
-                    string id = ""+resultado.GetInt32(0);
+                    string id = "" + resultado.GetInt32(0);
                     lista.Add(id); // idUsuario
                     lista.Add(resultado.GetString(1)); // Correo
                     lista.Add(resultado.GetString(2)); // Password 
@@ -108,14 +110,14 @@ namespace Biblioteca
                     lista.Add(resultado.GetString(3));
                 }
                 con.Close();
-                
-                if(lista.Count <= 0)
+
+                if (lista.Count <= 0)
                 {
                     con.Open();
-                     query = String.Format("select U.IdUsuario, U.Correo, U.Passwor from Usuarios as U Inner Join Alumno as E ON U.IdUsuario = E.idUsuario"+
-                               " where U.Correo ='{0} && U.Passwor = '{1}'; ", correo, pass);
-                     cmd = new SqlCommand(query, con);
-                     resultado = cmd.ExecuteReader();
+                    query = String.Format("select U.IdUsuario, U.Correo, U.Passwor from Usuarios as U Inner Join Alumno as E ON U.IdUsuario = E.idUsuario" +
+                              " where U.Correo ='{0} && U.Passwor = '{1}'; ", correo, pass);
+                    cmd = new SqlCommand(query, con);
+                    resultado = cmd.ExecuteReader();
                     while (resultado.Read())
                     {
                         lista.Clear();
@@ -128,18 +130,84 @@ namespace Biblioteca
                 }
                 con.Close();
                 return lista;
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
+                con.Close();
                 e.Message.ToString();
                 return lista;
             }
-          
-            
+
+
         }
 
-        public List<PublicacionProvisional> leerPublicacion(int idUsuario)
+        public List<PublicacionViewModel> leerPublicaciones(int idUsuario)
         {
-            string sq = String.Format("Select * from Publicacion where ID = {0}", idUsuario);
+            Conexion conexion = new Conexion();
+            SqlConnection con = conexion.cnn;
+            List<PublicacionViewModel> listaPublicaciones = new List<PublicacionViewModel>();
+            con.Open();
+            try
+            {
+                string sq = String.Format("Select ID,Vacante,Descricpion,Requisitos from Publicacion where IdEmpleado = {0}", idUsuario);
+                SqlCommand cmd = new SqlCommand(sq, con);
+                SqlDataReader resultado = cmd.ExecuteReader();
+                while (resultado.Read())
+                {
+                    int id = resultado.GetInt32(0);
+                    string carrer = campoCarreras(id);
+                    listaPublicaciones.Add(new PublicacionViewModel {
+                        ID = id,
+                        Vacante = resultado.GetString(1),
+                        Descripcion = resultado.GetString(2),
+                        Requisitos = resultado.GetString(3),
+                        Carreras = carrer
+                    });
+                }
+                con.Close();
+                return listaPublicaciones;
+
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                return null;
+            }
+        }
+
+        public PublicacionViewModel leerPublicacion(int idPublicacion)
+        {
+            Conexion conexion = new Conexion();
+            SqlConnection con = conexion.cnn;
+           PublicacionViewModel publicacion = null;
+            con.Open();
+            try
+            {
+                string sq = String.Format("Select ID,Vacante,Descricpion,Requisitos from Publicacion where ID = {0}", idPublicacion);
+                SqlCommand cmd = new SqlCommand(sq, con);
+                SqlDataReader resultado = cmd.ExecuteReader();
+                while (resultado.Read())
+                {
+                    int id = resultado.GetInt32(0);
+                    string carrer = campoCarreras(id);
+                    publicacion = new PublicacionViewModel
+                    {
+                        ID = id,
+                        Vacante = resultado.GetString(1),
+                        Descripcion = resultado.GetString(2),
+                        Requisitos = resultado.GetString(3),
+                        Carreras = carrer
+                    };
+                }
+                con.Close();
+                return publicacion;
+
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                return null;
+            }
         }
 
         public List<String> carreras(string carrera)
@@ -162,6 +230,31 @@ namespace Biblioteca
 
             return listCarreas;
 
+        }
+
+        public string campoCarreras(int idPublicacion)
+        {
+            Conexion conexion = new Conexion();
+            SqlConnection con = conexion.cnn;
+            string sCarreras = string.Empty;
+            con.Open();
+            try
+            {
+                string sq = String.Format("Select Carrera from Categoria where IdPublicacion = {0};", idPublicacion);
+                SqlCommand cmd = new SqlCommand(sq, con);
+                SqlDataReader resultado = cmd.ExecuteReader();
+                while (resultado.Read())
+                {
+                    sCarreras += resultado.GetString(0) + ",";
+                }
+                con.Close();
+                return sCarreras;
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                return "";
+            }
         }
     }
 

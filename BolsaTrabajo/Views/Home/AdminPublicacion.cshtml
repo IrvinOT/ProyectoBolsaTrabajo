@@ -1,4 +1,4 @@
-﻿@model BolsaTrabajo.Models.EmpresaViewModel
+﻿@model BolsaTrabajo.Models.CarrerasViewModel
 
 @using (Html.BeginForm("Modificar","Home", FormMethod.Post))
 {
@@ -14,15 +14,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Practicante en sistemas computacionales</td>
-                        <td>
-                            <button class="btn" type="submit"><i class="far fa-edit"></i></button>
-                            |
-                            <input type="checkbox"/>
-                        </td>
-                    </tr>
+                     @using (Html.BeginForm()) {}
+                    @foreach (var pub in Model.listPublicaciones)
+                    {
+                        <tr>
+                            @using (Html.BeginForm())
+                            {
+                                var id = pub.ID;
+                                var Vacnate = pub.Vacante;
+
+                                @Html.HiddenFor(m => m.IdPublicacion, new { @Value = pub.ID })
+                                <td> @id</td>
+                                <td>@Vacnate</td>
+                                <td>
+                                    <button class="btn" type="submit"><i class="far fa-edit"></i></button>
+                                    |
+                                    <input actt type="checkbox" />
+                                </td>
+                            }
+                        </tr>
+                    }
                 </tbody>
             </table>
             <input type="button" value="Eliminar Seleccionados" class="btn btn-success"/>

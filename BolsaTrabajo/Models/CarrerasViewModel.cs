@@ -10,15 +10,15 @@ namespace BolsaTrabajo.Models
     public class CarrerasViewModel
     {
 
-        public string Carrera { get; set; }
+        public int Carrera { get; set; }
 
-         [Required]
-         [EmailAddress]
-         public string Email { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
 
-         [Required]
-         [DataType(DataType.Password)]
-         public string Password { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
 
 
 
@@ -43,6 +43,12 @@ namespace BolsaTrabajo.Models
                 };
             }
         }
+
+        public List<PublicacionViewModel> listPublicaciones { get; set; }
+
+        public int IdPublicacion { get; set; }
+
+        public PublicacionViewModel publicacion { get; set; }
 
     }
     

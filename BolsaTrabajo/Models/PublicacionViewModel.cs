@@ -8,6 +8,7 @@ namespace BolsaTrabajo.Models
 {
     public class PublicacionViewModel
     {
+        public int ID { get; set; }
         public string Vacante { get; set; }
         public string Descripcion { get; set; }
         public string Requisitos{ get; set; }
