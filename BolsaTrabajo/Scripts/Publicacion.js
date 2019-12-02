@@ -22,3 +22,4 @@ function agregarCarrera() {
 function EliminarCarreras() {
     txtCarreras.value = "";
 }
+

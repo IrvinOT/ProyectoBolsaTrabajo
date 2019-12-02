@@ -212,6 +212,7 @@ namespace Biblioteca
 
         public List<String> carreras(string carrera)
         {
+            if(carrera != null) { 
             Char[] arr = carrera.ToCharArray();
             string carr = string.Empty;
             List<String> listCarreas = new List<string>();
@@ -229,6 +230,8 @@ namespace Biblioteca
             }
 
             return listCarreas;
+            }
+            return null;
 
         }
 

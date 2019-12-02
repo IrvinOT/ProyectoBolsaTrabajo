@@ -3,6 +3,7 @@ using BolsaTrabajo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,14 +15,14 @@ namespace BolsaTrabajo.Controllers
         {
             return View();
         }
-  
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-        
+
 
         public ActionResult Contact()
         {
@@ -83,15 +84,28 @@ namespace BolsaTrabajo.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdminPublicacion(CarrerasViewModel m)
+        public ActionResult AdminPublicacion(CarrerasViewModel m , string comand)
         {
             Operacion opBd = new Operacion();
             var u = TempData["Usuario"] as UsuarioViewModel;
             TempData["Usuario"] = u;
             m.publicacion = opBd.leerPublicacion(m.IdPublicacion);
             TempData["Publicacion"] = m;
+
+            if (comand.Equals("Eliminar")) {
+                int id = m.IdPublicacion;
+                string sql = String.Format( "Delete from Publicacion where ID = {0};",id);
+                opBd.insertar(sql);
+                sql = String.Format("Delete from Categoria where IdPublicacion = {0};",id);
+                opBd.insertar(sql);
+                return RedirectToAction("AdminPublicacion");
+            } else { 
+           
             return RedirectToAction("Modificar");
+            }
+
         }
+       
 
         [HttpGet]
         public ActionResult Modificar()
@@ -140,4 +154,5 @@ namespace BolsaTrabajo.Controllers
 
 
     }
+
 }
