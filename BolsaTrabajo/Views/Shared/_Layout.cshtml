@@ -10,17 +10,18 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar fixed-top">
+    <div id="BarraNavegacion" class="navbar fixed-top">
         <div class="container ">
             <div class="navbar-header">
                 @Html.ActionLink("ITCJ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand " })
             </div>
             <div>
                 <ul class="nav ">
-                    <li class="nav-item">
-                        <a id="Buscar" data-toggle="collapse" href="#formularioBusqueda" role="button" aria-expanded="false" aria-controls="formularioBusqueda"> Buscar <i class="fas fa-search"></i> </a>
-                    </li>
-                    <li class="nav-item">@Html.ActionLink("Administrar Vacantes", "AdminPublicacion", "Home")</li>
+                    @*<li class="nav-item">
+            <a id="Buscar" data-toggle="collapse" href="#formularioBusqueda" role="button" aria-expanded="false" aria-controls="formularioBusqueda"> Buscar <i class="fas fa-search"></i> </a>
+        </li>*@
+                    <li class="nav-item" id="OpcionesLayout">@Html.ActionLink("Administrar Vacantes", "AdminPublicacion", "Home")</li>
+                    <li class="nav-item"><a href="/Cuenta/Login"><i class="fas fa-sign-out-alt ml-3"></i>Salir</a></li>
                 </ul>
             </div>
         </div>

@@ -1,45 +1,48 @@
 ﻿
 @model BolsaTrabajo.Models.CarrerasViewModel
-    @{
-        var pub = Model.publicacionDetallada;
-        var Vacante = pub.Vacante;
-        var Empresa = pub.Empresa;
-        var Requisitos = pub.Requisitos;
-        var Descripcion = pub.Descripcion;
-        var Corre = pub.Correo;
-        var Tel = pub.Telefono;
-        var Careraras = pub.Carreras;
-    }
-    <main class="container">
-        <div class="blog-main">
-            <div class="border-bottom">
-                <h3 class="mt-2"> @Vacante</h3>
-                <h6 class="text-muted"><i class="far fa-building icono"></i>  @Empresa <small><i class="fas fa-user-graduate"></i> @Careraras</small></h6>
-            </div>
-            <div class="mt-2">
-                <h4><i class="far fa-address-card"></i> Requisitos</h4>
-                <p>
-                    @Requisitos
-                </p>
-            </div>
-            <div>
-                <h4>Descripcion</h4>
-                <p>
-                    @Descripcion
-                </p>
-            </div>
-            <div>
-                
-                <ul class="list-group">
-                    <li class="list-group-item "><h6>Contacto: </h6></li>
-                    <li class="list-group-item"><i class="fas fa-envelope ml-1"></i> @Corre</li>
-                    <li class="list-group-item"><i class="fas fa-phone-alt ml-1"></i> @Tel</li>
-                </ul>
-
-            </div>
+@{
+    var pub = Model.publicacionDetallada;
+    var Vacante = pub.Vacante;
+    var Empresa = pub.Empresa;
+    var Requisitos = pub.Requisitos;
+    var Descripcion = pub.Descripcion;
+    var Corre = pub.Correo;
+    var Tel = pub.Telefono;
+    var Careraras = pub.Carreras;
+}
+<main class="container">
+    <div class="blog-main">
+        <div class="border-bottom">
+            <h3 class="mt-2"> @Vacante</h3>
+            <h6 class="text-muted"><i class="far fa-building icono"></i>  @Empresa <small><i class="fas fa-user-graduate"></i> @Careraras</small></h6>
         </div>
+        <div class="mt-2">
+            <h4><i class="far fa-address-card"></i> Requisitos</h4>
+            <p>
+                @Requisitos
+            </p>
+        </div>
+        <div>
+            <h4>Descripcion</h4>
+            <p>
+                @Descripcion
+            </p>
+        </div>
+        <div>
 
-    </main>
-     
+            <ul class="list-group">
+                <li class="list-group-item "><h6>Contacto: </h6></li>
+                <li class="list-group-item"><i class="fas fa-envelope ml-1"></i> @Corre</li>
+                <li class="list-group-item"><i class="fas fa-phone-alt ml-1"></i> @Tel</li>
+            </ul>
 
+        </div>
+    </div>
+
+</main>
+
+@if (!Model.Tipo.Equals("Empleado"))
+{
+    <script src="~/Scripts/EliminarOpcines.js"></script>
+}
 
