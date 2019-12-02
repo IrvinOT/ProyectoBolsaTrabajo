@@ -1,7 +1,7 @@
 ﻿@model BolsaTrabajo.Models.EmpresaViewModel
-
+@{ var ModeloTemp = new BolsaTrabajo.Models.CarrerasViewModel(); }
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Registrar";
 }
 @using (Html.BeginForm())
 {
@@ -18,7 +18,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Sector perteneciente:</label>
-                <label>Acaba una lista mamalona como la de la busqueda no mas que no lo supe hacer</label>
+                <label> @Html.DropDownListFor(m => m.RazonEmp, ModeloTemp.ListaSectores, new { @Class = "form-control form-control-sm" })</label>
             </div>
             <div class="col-md-12 form-group">
                 <label>Telefono empresa:</label>

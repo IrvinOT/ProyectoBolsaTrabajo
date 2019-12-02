@@ -1,7 +1,5 @@
 ﻿@model BolsaTrabajo.Models.CarrerasViewModel
 
-@using (Html.BeginForm("Modificar","Home", FormMethod.Post))
-{
     <div class="container mt-4">
         <div class="row">
             <h3 class="col-md-12">Administrar publicaciones</h3>
@@ -14,7 +12,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                     @using (Html.BeginForm()) {}
+   
                     @foreach (var pub in Model.listPublicaciones)
                     {
                         <tr>
@@ -39,5 +37,5 @@
             
         </div>
     </div>
-}
+
 

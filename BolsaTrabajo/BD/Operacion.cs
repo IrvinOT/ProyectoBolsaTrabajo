@@ -175,6 +175,45 @@ namespace Biblioteca
             }
         }
 
+        public List<PublicacionDetalladaViewModel> leerPublicacionesDet()
+        {
+            Conexion conexion = new Conexion();
+            SqlConnection con = conexion.cnn;
+            List<PublicacionDetalladaViewModel> listaPublicaciones = new List<PublicacionDetalladaViewModel>();
+            con.Open();
+            try
+            {
+                string sq = " Select pb.ID, pb.Vacante, pb.Descricpion,pb.Requisitos,pb.Empresa,us.Correo,Em.Telefono" +
+                            " from Publicacion As pb Inner Join Empleado as Em On pb.IdEmpleado = Em.idEmpleado" +
+                            " INNER JOIN Usuarios us on Em.IdUsuario = us.IdUsuario";
+                SqlCommand cmd = new SqlCommand(sq, con);
+                SqlDataReader resultado = cmd.ExecuteReader();
+                while (resultado.Read())
+                {
+                    int id = resultado.GetInt32(0);
+                    string carrer = campoCarreras(id);
+                    listaPublicaciones.Add(new PublicacionDetalladaViewModel {
+                        ID = id,
+                        Vacante = resultado.GetString(1),
+                        Descripcion = resultado.GetString(2),
+                        Requisitos = resultado.GetString(3),
+                        Empresa = resultado.GetString(4),
+                        Correo = resultado.GetString(5),
+                        Telefono = resultado.GetString(6),
+                        Carreras = carrer
+                    });
+                }
+                con.Close();
+                return listaPublicaciones;
+
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                return null;
+            }
+        }
+
         public PublicacionViewModel leerPublicacion(int idPublicacion)
         {
             Conexion conexion = new Conexion();
@@ -196,6 +235,46 @@ namespace Biblioteca
                         Vacante = resultado.GetString(1),
                         Descripcion = resultado.GetString(2),
                         Requisitos = resultado.GetString(3),
+                        Carreras = carrer
+                    };
+                }
+                con.Close();
+                return publicacion;
+
+            }
+            catch (Exception e)
+            {
+                con.Close();
+                return null;
+            }
+        }
+
+        public PublicacionDetalladaViewModel leerPublicacionDetallada(int idPublicacion)
+        {
+            Conexion conexion = new Conexion();
+            SqlConnection con = conexion.cnn;
+            PublicacionDetalladaViewModel publicacion = null;
+            con.Open();
+            try
+            {
+                string sq = String.Format(" Select pb.ID, pb.Vacante, pb.Descricpion, pb.Requisitos, pb.Empresa, us.Correo, Em.Telefono" +
+                            " from Publicacion As pb Inner Join Empleado as Em On pb.IdEmpleado = Em.idEmpleado" +
+                            " INNER JOIN Usuarios us on Em.IdUsuario = us.IdUsuario where pb.ID = {0}", idPublicacion);
+                SqlCommand cmd = new SqlCommand(sq, con);
+                SqlDataReader resultado = cmd.ExecuteReader();
+                while (resultado.Read())
+                {
+                    int id = resultado.GetInt32(0);
+                    string carrer = campoCarreras(id);
+                    publicacion = new PublicacionDetalladaViewModel
+                    {
+                        ID = id,
+                        Vacante = resultado.GetString(1),
+                        Descripcion = resultado.GetString(2),
+                        Requisitos = resultado.GetString(3),
+                        Empresa = resultado.GetString(4),
+                        Correo = resultado.GetString(5),
+                        Telefono = resultado.GetString(6),
                         Carreras = carrer
                     };
                 }

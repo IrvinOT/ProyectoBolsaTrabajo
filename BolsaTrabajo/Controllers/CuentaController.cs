@@ -66,7 +66,7 @@ namespace BolsaTrabajo.Controllers
                                 " VALUES({0},'{1}','{2}','{3}',{4});", idEmpleado, model.DependenciaE, model.PuestoE, model.TelefonoD, idEmpresa);
             opBD.insertar(sql);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
     }
 }

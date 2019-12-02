@@ -11,9 +11,40 @@ namespace BolsaTrabajo.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            if (TempData.ContainsKey("Usuario"))
+            {
+            var U = TempData["Usuario"] as UsuarioViewModel;
+            TempData["Usuario"] = U;
+            Operacion opBd = new Operacion();
+            var m = new CarrerasViewModel();
+            return View(m);
+            }
+            return RedirectToAction("Login", "Cuenta");
+          
+        }
+
+
+        [HttpPost]
+        public ActionResult Index(CarrerasViewModel m)
+        {
+            Operacion opBd = new Operacion();
+            m.publicacionDetallada = opBd.leerPublicacionDetallada(m.IdPublicacion);
+            TempData["Publicacion"] = m;
+            return RedirectToAction("Vacantes");
+        }
+
+        [HttpGet]
+        public ActionResult Vacantes()
+        {
+            if (TempData.ContainsKey("Publicacion"))
+            {
+                var m = TempData["Publicacion"] as CarrerasViewModel;
+                return View(m);
+            }
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()
@@ -66,21 +97,19 @@ namespace BolsaTrabajo.Controllers
         [HttpGet]
         public ActionResult AdminPublicacion()
         {
-            var U = new UsuarioViewModel
+            if (TempData.ContainsKey("Usuario"))
             {
-                IdUsuario = 1,
-                Empresa = "Calcetines SA"
-            };
+                var U = TempData["Usuario"] as UsuarioViewModel;
+                TempData["Usuario"] = U;
 
-            TempData["Usuario"] = U;
-            Operacion opBd = new Operacion();
-            var modelo = new CarrerasViewModel
-            {
-                listPublicaciones = opBd.leerPublicaciones(U.IdUsuario)
-            };
-
-            TempData["Usuario"] = U;
-            return View(modelo);
+                Operacion opBd = new Operacion();
+                var modelo = new CarrerasViewModel
+                {
+                    listPublicaciones = opBd.leerPublicaciones(U.IdUsuario)
+                };
+                return View(modelo);
+            }
+            return RedirectToAction("Login", "Cuenta");
         }
 
         [HttpPost]

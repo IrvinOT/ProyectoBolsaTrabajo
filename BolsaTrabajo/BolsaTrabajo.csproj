@@ -132,6 +132,7 @@
     </Compile>
     <Compile Include="Models\CarrerasViewModel.cs" />
     <Compile Include="Models\EmpresaViewModel.cs" />
+    <Compile Include="Models\PublicacionDetalladaViewModel.cs" />
     <Compile Include="Models\PublicacionViewModel.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,6 +221,7 @@
     <Content Include="Views\Cuenta\Register.cshtml" />
     <Content Include="Views\Home\AdminPublicacion.cshtml" />
     <Content Include="Views\Home\Modificar.cshtml" />
+    <Content Include="Views\Home\Vacantes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
